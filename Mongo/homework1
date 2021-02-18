@@ -87,7 +87,10 @@ db.getCollection('students').aggregate([
 12) Знайти дітей з не повною сімєю
 
 db.getCollection('students').find({
-    parents: {$size: 1}
+    $or:[
+    {parents: {$size: 1}},
+    {parents: {$exists: false}}
+    ]
     })
 ---------------------------------------------
 13) Знайти батьків які не працюють
